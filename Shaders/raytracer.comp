@@ -31,7 +31,7 @@ struct RayHit {
 bool intersectAxisAlignedBox(vec3 rayOrigin, vec3 rayDirection, vec3 boxMin, vec3 boxMax, out float timeNear, out float timeFar){
     vec3 invDir = 1.0 / rayDirection;
     vec3 tMinV  = (boxMin - rayOrigin) * invDir;
-    vec3 tMaxV  = (boxMax - rayOrigin) * invDir
+    vec3 tMaxV  = (boxMax - rayOrigin) * invDir;
     vec3 tMin = min(tMinV, tMaxV);
     vec3 tMax = max(tMinV, tMaxV);
     timeNear = max(max(tMin.x, tMin.y), tMin.z);
@@ -88,7 +88,7 @@ RayHit traverseBoundingVolumeHierarchy(vec3 rayOrigin, vec3 rayDirection) {
 
     int nodeStack[32];
     int stackPointer = 0;
-    nodeStack[stackPointer++] = 0
+    nodeStack[stackPointer++] = 0;
 
 
     while (stackPointer > 0) {
@@ -145,7 +145,7 @@ vec3 calculateShading(vec3 surfaceColor, vec3 surfacePosition, vec3 surfaceNorma
     float shadowFactor = calculateShadow(surfacePosition, surfaceNormal);
 
     vec3 ambient = ambientFactor * surfaceColor;
-    vec3 diffuse = diffuseIntensity * surfaceColor
+    vec3 diffuse = diffuseIntensity * surfaceColor;
     vec3 specular = specularIntensity * LIGHT_COLOR;
     vec3 shadow = shadowFactor * (diffuse + specular);
 
